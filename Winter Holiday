@@ -1,0 +1,11 @@
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd.service
+systemctl enable httpd.service
+mkdir /var/www/html/winter
+yum install -y git
+git clone https://github.com/codvatechlabs/static_website_winter.git
+cp -r static_website_winter/. /var/www/html/winter/
+systemctl stop httpd.service
+systemctl start httpd.service
